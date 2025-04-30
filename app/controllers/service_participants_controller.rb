@@ -37,7 +37,9 @@ class ServiceParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:service_participant).permit(:user_id, :role)
+    permitted_params = [ :role ]
+    permitted_params << :user_id if current_user.admin?
+    params.require(:service_participant).permit(*permitted_params)
   end
 
   def authorize_admin!

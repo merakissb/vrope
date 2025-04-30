@@ -3,7 +3,7 @@ class Contract < ApplicationRecord
 
   has_one_attached :file
 
-  validates :file, content_type: ['application/pdf'], size: { less_than: 10.megabytes }
+  validates :file, content_type: [ "application/pdf" ], size: { less_than: 10.megabytes }
   validates :start_date, :end_date, :price, :currency, presence: true
   validate :end_date_after_start_date, if: -> { start_date.present? && end_date.present? }
 

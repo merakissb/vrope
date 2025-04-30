@@ -19,10 +19,6 @@ class Service < ApplicationRecord
     done: 4
   }, default: :pending
 
-  # scopes
-  scope :by_status, ->(status) { where(status: status) }
-  scope :by_building, ->(building_id) { where(building_id: building_id) }
-
   # callbacks
   after_create :generate_daily_tasks
 

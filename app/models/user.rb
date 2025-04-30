@@ -16,6 +16,10 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :rut, :birthdate, presence: true
   validates :rut, presence: true, uniqueness: { case_sensitive: false }
 
+  def has_access_to_building?(building_id)
+    building_clients.exists?(building_id: building_id)
+  end
+
   def admin?
     role == "admin"
   end

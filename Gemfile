@@ -56,17 +56,22 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # lint gems
+  gem "rubocop", require: false
+  gem "rubocop-rails"  # Para reglas específicas de Rails
+  gem "rubocop-rspec"  # Si usas RSpec (opcional)
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'shoulda-matchers', '~> 6.0'
+  gem "shoulda-matchers", "~> 6.0"
 end
 
 gem "devise", "~> 4.9"
 gem "sidekiq", "~> 8.0"
 gem "factory_bot", "~> 6.5"
 gem "faker"
-gem 'active_storage_validations'
+gem "active_storage_validations"

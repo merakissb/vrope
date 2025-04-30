@@ -4,7 +4,7 @@ class DailyTask < ApplicationRecord
 
   has_one_attached :file
 
-  validates :file, content_type: ['image/jpeg'], size: { less_than: 5.megabytes }
+  validates :file, content_type: [ "image/jpeg" ], size: { less_than: 5.megabytes }
   validates :date, :name, :description, presence: true
 
   enum :status, {

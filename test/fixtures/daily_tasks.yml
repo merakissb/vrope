@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service: one
+  date: 2025-04-17
+  name: MyString
+  description: MyText
+  completed: false
+  completed_at: 2025-04-17 17:48:49
+
+two:
+  service: two
+  date: 2025-04-17
+  name: MyString
+  description: MyText
+  completed: false
+  completed_at: 2025-04-17 17:48:49

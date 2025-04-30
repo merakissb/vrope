@@ -15,6 +15,12 @@ class ServiceParticipantsController < ApplicationController
   end
 
   def create
+    user = User.find_by(id: participant_params[:user_id])
+
+    unless user
+      return render json: { error: "Usuario no encontrado" }, status: :unprocessable_entity
+    end
+
     @participant = @service.service_participants.new(participant_params)
 
     if @participant.save

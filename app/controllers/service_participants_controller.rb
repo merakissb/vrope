@@ -15,13 +15,14 @@ class ServiceParticipantsController < ApplicationController
   end
 
   def create
-    user = User.find_by(id: participant_params[:user_id])
+    user = User.find_by(rut: params[:service_participant][:rut])
 
     unless user
       return render json: { error: "Usuario no encontrado" }, status: :unprocessable_entity
     end
 
     @participant = @service.service_participants.new(participant_params)
+    @participant.user = user
 
     if @participant.save
       render json: @participant, status: :created
@@ -37,9 +38,7 @@ class ServiceParticipantsController < ApplicationController
   end
 
   def participant_params
-    permitted_params = [ :role ]
-    permitted_params << :user_id if current_user.admin?
-    params.require(:service_participant).permit(*permitted_params)
+    params.require(:service_participant).permit(:role)
   end
 
   def authorize_admin!

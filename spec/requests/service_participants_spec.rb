@@ -6,7 +6,7 @@ RSpec.describe "ServiceParticipants", type: :request do
   let(:client) { create(:user, :client) }
   let(:service) { create(:service) }
   let(:participant_user) { create(:user) }
-  let(:valid_attributes) { { user_id: participant_user.id, role: "supervisor" } }
+  let(:valid_attributes) { { rut: participant_user.rut, role: "supervisor" } }
 
   describe "POST /services/:service_id/participants" do
     context "when user is admin" do
